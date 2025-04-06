@@ -7,6 +7,9 @@ function reload(){
     window.location.reload();
 }
 
+const menuButton = document.getElementById("menu-button");
+const mobileMenu = document.getElementById("mobile-menu");
+
 async function fetchNews(query) {
   const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
   const data = await res.json();
@@ -34,7 +37,7 @@ function fillDataInCard(cardClone, article) {
   const newsDesc = cardClone.querySelector("#news-desc");
 
   newsImg.src = article.urlToImage;
-  if (article.title.length>60){
+  if (article.title.length > 60) {
     newsTitle.innerHTML = `${article.title.slice(0, 60)}...`;
   } else {
     newsTitle.innerHTML = article.title;
@@ -52,8 +55,8 @@ function fillDataInCard(cardClone, article) {
 
   newsSource.innerHTML = `${article.source.name} · ${date}`;
 
-  cardClone.firstElementChild.addEventListener('click', ()=>{
-    window.open(article.url,"_blank");
+  cardClone.firstElementChild.addEventListener("click", () => {
+    window.open(article.url, "_blank");
   });
 }
 
@@ -64,7 +67,8 @@ function onNavItemClick(id) {
   curSelectedNav?.classList.remove("active");
   curSelectedNav = navItem;
   curSelectedNav.classList.add("active");
-}  
+  mobileMenu.classList.remove("active");
+}
 
 const searchButton = document.getElementById("search-button");
 const searchText = document.getElementById("search-text");
@@ -75,4 +79,8 @@ searchButton.addEventListener("click", () => {
   fetchNews(query);
   curSelectedNav?.classList.remove("active");
   curSelectedNav = null;
+});
+
+menuButton.addEventListener("click", () => {
+  mobileMenu.classList.toggle("active");
 });

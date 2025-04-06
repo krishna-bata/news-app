@@ -1,0 +1,15 @@
+@media (width > 1024px) {
+  .main-nav .menu-button {
+    display: none;
+  }
+}
+
+@media (width <= 1024px) {
+  .main-nav .nav-links {
+    display: none;
+  }
+
+  .cards-container {
+    justify-content: space-evenly;
+  }
+}
