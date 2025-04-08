@@ -1,11 +1,13 @@
 const API_KEY = "7c304f1869eb454781e3326835b3155f";
 const url = "https://newsapi.org/v2/everything?q=";
 
-window.addEventListener('load',fetchNews("India"));
+// window.addEventListener('load',fetchNews("India"));
 
-function reload(){
-    window.location.reload();
-}
+// function reload(){
+//     window.location.reload();
+// }
+
+fetchNews("India");
 
 const menuButton = document.getElementById("menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
